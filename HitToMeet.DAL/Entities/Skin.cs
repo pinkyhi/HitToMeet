@@ -1,4 +1,6 @@
 ﻿using HitToMeet.DAL.Entities.BaseEntities;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace HitToMeet.DAL.Entities
 {
@@ -9,5 +11,7 @@ namespace HitToMeet.DAL.Entities
         public int AnimalId { get; set; }
 
         public Animal Animal { get; set; }
+
+        public IEnumerable<UserSkin> UserSkins { get; set; }
     }
 }

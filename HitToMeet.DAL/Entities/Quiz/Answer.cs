@@ -7,5 +7,9 @@ namespace HitToMeet.DAL.Entities.Quiz
         public int Points { get; set; }
 
         public string Title { get; set; }
+
+        public int QuestionId { get; set; }
+
+        public Question Question { get; set; }
     }
 }

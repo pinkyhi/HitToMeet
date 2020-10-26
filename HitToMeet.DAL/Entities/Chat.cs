@@ -1,4 +1,6 @@
 ﻿using HitToMeet.DAL.Entities.BaseEntities;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace HitToMeet.DAL.Entities
 {
@@ -13,5 +15,7 @@ namespace HitToMeet.DAL.Entities
         public User Initiator { get; set; }
 
         public User Accepter { get; set; }
+
+        public IEnumerable<Message> Messages { get; set; }
     }
 }

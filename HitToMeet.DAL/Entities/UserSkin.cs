@@ -10,6 +10,8 @@ namespace HitToMeet.DAL.Entities
 
         public int SkinId { get; set; }
 
+        public Skin Skin { get; set; }
+
         public int SkinStatus { get; set; }
     }
 }

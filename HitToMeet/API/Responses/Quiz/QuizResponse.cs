@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using HitToMeet.API.ViewModels.Quiz;
-using HitToMit.BL.Results;
+using HitToMeet.BL.Results;
 using System.Collections.Generic;
 
 namespace HitToMeet.API.Responses.Quiz

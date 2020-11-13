@@ -1,7 +1,7 @@
-﻿using HitToMit.BL.Results;
+﻿using HitToMeet.BL.Results;
 using System.Threading.Tasks;
 
-namespace HitToMit.BL.Interfaces
+namespace HitToMeet.BL.Interfaces
 {
     public interface IQuizService
     {

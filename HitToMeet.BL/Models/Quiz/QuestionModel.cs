@@ -2,7 +2,7 @@
 using HitToMeet.DAL.Entities.Quiz;
 using System.Collections.Generic;
 
-namespace HitToMit.BL.Models.Quiz
+namespace HitToMeet.BL.Models.Quiz
 {
     [AutoMap(typeof(Question), ReverseMap = true)]
     public class QuestionModel

@@ -10,8 +10,8 @@ using HitToMeet.Filters.ExceptionFilters;
 using HitToMeet.Mappers;
 using HitToMeet.WebServices.Interfaces;
 using HitToMeet.WebServices.Services;
-using HitToMit.BL.Interfaces;
-using HitToMit.BL.Services;
+using HitToMeet.BL.Interfaces;
+using HitToMeet.BL.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -147,7 +147,7 @@ namespace HitToMeet
 
         private void InstallAutoMapper(IServiceCollection services)
         {
-            var blAssembly = Assembly.Load("HitToMit.BL");
+            var blAssembly = Assembly.Load("HitToMeet.BL");
             var dalAssembly = Assembly.Load("HitToMeet.DAL");
             var mapperConfig = new MapperConfiguration(mc =>
             {

@@ -1,7 +1,7 @@
-﻿using HitToMit.BL.Models.Quiz;
+﻿using HitToMeet.BL.Models.Quiz;
 using System.Collections.Generic;
 
-namespace HitToMit.BL.Results
+namespace HitToMeet.BL.Results
 {
     public class QuizResult
     {

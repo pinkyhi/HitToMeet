@@ -3,15 +3,15 @@ using HitToMeet.DAL.Entities;
 using HitToMeet.DAL.Entities.Quiz;
 using HitToMeet.DAL.Interfaces;
 using HitToMeet.DAL.Managers;
-using HitToMit.BL.Interfaces;
-using HitToMit.BL.Models.Quiz;
-using HitToMit.BL.Results;
+using HitToMeet.BL.Interfaces;
+using HitToMeet.BL.Models.Quiz;
+using HitToMeet.BL.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HitToMit.BL.Services
+namespace HitToMeet.BL.Services
 {
     public class QuizService : IQuizService
     {

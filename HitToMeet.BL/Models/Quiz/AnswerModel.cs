@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using HitToMeet.DAL.Entities.Quiz;
 
-namespace HitToMit.BL.Models.Quiz
+namespace HitToMeet.BL.Models.Quiz
 {
     [AutoMap(typeof(Answer), ReverseMap = true)]
     public class AnswerModel

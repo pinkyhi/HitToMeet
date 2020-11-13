@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using HitToMit.BL.Models.Quiz;
+using HitToMeet.BL.Models.Quiz;
 
 namespace HitToMeet.API.ViewModels.Quiz
 {

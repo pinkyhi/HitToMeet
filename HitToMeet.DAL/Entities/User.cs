@@ -10,7 +10,9 @@ namespace HitToMeet.DAL.Entities
         [Required]
         public DateTime RegistrationDate { get; set; }
 
-        public int AnimalId { get; set; }
+        public int? AnimalId { get; set; }
+
+        public Animal Animal { get; set; }
 
         public string Description { get; set; }
 

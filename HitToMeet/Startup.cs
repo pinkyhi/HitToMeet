@@ -10,6 +10,8 @@ using HitToMeet.Filters.ExceptionFilters;
 using HitToMeet.Mappers;
 using HitToMeet.WebServices.Interfaces;
 using HitToMeet.WebServices.Services;
+using HitToMit.BL.Interfaces;
+using HitToMit.BL.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,6 +25,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace HitToMeet
@@ -144,8 +147,13 @@ namespace HitToMeet
 
         private void InstallAutoMapper(IServiceCollection services)
         {
+            var blAssembly = Assembly.Load("HitToMit.BL");
+            var dalAssembly = Assembly.Load("HitToMeet.DAL");
             var mapperConfig = new MapperConfiguration(mc =>
             {
+                mc.AddMaps(Assembly.GetExecutingAssembly());
+                mc.AddMaps(blAssembly);
+                mc.AddMaps(dalAssembly);
                 mc.AddProfile(new MapperProfile());
             });
 
@@ -155,7 +163,7 @@ namespace HitToMeet
 
         private void InstallPresentation(IServiceCollection services)
         {
-            // Here will be services from BUSINESS LAYER!
+            services.AddScoped<IQuizService, QuizService>();
         }
 
         private void InstallJwt(IServiceCollection services)

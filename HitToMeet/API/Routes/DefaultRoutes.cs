@@ -18,5 +18,10 @@
 
             public const string RefreshToken = Base + "/identity/refreshToken";
         }
+
+        public static class Quiz
+        {
+            public const string QuizPath = Base + "/quiz";
+        }
     }
 }

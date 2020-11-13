@@ -1,5 +1,4 @@
 ﻿using HitToMeet.DAL.Entities.BaseEntities;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace HitToMeet.DAL.Entities

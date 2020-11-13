@@ -79,6 +79,15 @@ namespace HitToMeet.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You already have an animal.
+        /// </summary>
+        public static string ExceedAnimalException {
+            get {
+                return ResourceManager.GetString("ExceedAnimalException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Something went wrong on server.
         /// </summary>
         public static string HitToMeetException {

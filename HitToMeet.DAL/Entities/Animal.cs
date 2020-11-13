@@ -14,5 +14,7 @@ namespace HitToMeet.DAL.Entities
         public int MaxPoints { get; set; }
 
         public IEnumerable<Skin> Skins { get; set; }
+
+        public IEnumerable<User> Users { get; set; }
     }
 }

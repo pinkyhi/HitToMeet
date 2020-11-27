@@ -31,9 +31,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\HitToMeet.BL\HitToMeet.BL.csproj" />
 		<ProjectReference Include="..\HitToMeet.Core\HitToMeet.Core.csproj" />
 		<ProjectReference Include="..\HitToMeet.DAL\HitToMeet.DAL.csproj" />
-		<ProjectReference Include="..\HitToMit.BL\HitToMit.BL.csproj" />
 	</ItemGroup>
 
 	<Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -91,6 +91,10 @@ export const Login = (Email, Password) => (dispatch) => {
             })
         .then(response => response.json())
         .then(response => dispatch(Lodins(response)))
+        .then(response => {
+            document.cookie = "refreshToken=" + response.payload.refreshToken;
+            document.cookie = "token=" + response.payload.token;
+        })
         .catch(error => {
             console.log('Post account ', error.message);
             alert('Your account could not be posted\nError: ' + error.message);

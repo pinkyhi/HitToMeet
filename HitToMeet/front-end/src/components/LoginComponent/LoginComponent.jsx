@@ -16,6 +16,7 @@ class LogIn extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    
     handleSubmit(values) {
         this.props.Login(values.email, values.password);
     }

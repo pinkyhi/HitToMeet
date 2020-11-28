@@ -1,9 +1,11 @@
 ﻿using HitToMeet.DAL.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HitToMeet.DAL.Managers
 {
@@ -15,6 +17,13 @@ namespace HitToMeet.DAL.Managers
             : base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
         {
             this.dbContext = dbContext;
+        }
+
+        public async Task<User> FindByIdWithSkinsAsync(string userId)
+        {
+            return await dbContext.Users
+                .Include(x => x.UserSkins)
+                .SingleAsync(x => x.Id.Equals(userId));
         }
     }
 }

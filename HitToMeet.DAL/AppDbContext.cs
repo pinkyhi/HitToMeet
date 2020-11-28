@@ -12,7 +12,7 @@ namespace HitToMeet.DAL
         {
         }
 
-        public DbSet<User> User { get; set; }
+        public DbSet<User> DbUsers { get; set; }
 
         public DbSet<RefreshToken> RefreshTokens { get; set; }
 

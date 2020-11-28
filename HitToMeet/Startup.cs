@@ -164,6 +164,7 @@ namespace HitToMeet
         private void InstallPresentation(IServiceCollection services)
         {
             services.AddScoped<IQuizService, QuizService>();
+            services.AddScoped<ICasinoService, CasinoService>();
         }
 
         private void InstallJwt(IServiceCollection services)

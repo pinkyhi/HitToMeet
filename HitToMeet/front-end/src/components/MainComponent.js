@@ -5,6 +5,7 @@ import Registration from './RegistrationComponent';
 import Quiz from './Quiz';
 import Footer from './FooterComponent';
 import SuccessRegistration from './SuccessRegistration';
+import PersonalArea from './PersonalAreaComponent';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createAccount, Login } from '../redux/ActionCreators';
@@ -31,6 +32,7 @@ class Main extends Component {
                     <Route exact path="/registration" component={() => <Registration createAccount={this.props.createAccount}></Registration>}></Route>
                     <Route path="/successreg" component={SuccessRegistration}></Route>
                     <Route path="/quiz" component={Quiz}></Route>
+                    <Route path="/personalarea" component={PersonalArea}></Route>
                     <Redirect to="/login"></Redirect>
                 </Switch>
                 <Footer></Footer>

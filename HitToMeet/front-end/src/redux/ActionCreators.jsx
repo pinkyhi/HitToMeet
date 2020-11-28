@@ -17,8 +17,9 @@ export const Lodins = (account) => ({
 export const createAccount = (Email, UserName, Password) => (dispatch) => {
     const newAccount = {
         Email: Email,
-        Password: Password,
-        UserName: UserName
+        UserName: UserName,
+        Password: Password
+        
     }
     
     return fetch(baseUrl + 'register', {

@@ -32,7 +32,7 @@
         public static class Profile
         {
             public const string GetProfile = Base + "/profile";
-            public const string SetProfile = Base + "/profile";
+            public const string UpdateProfile = Base + "/profile";
         }
     }
 }

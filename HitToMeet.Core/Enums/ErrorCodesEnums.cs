@@ -36,5 +36,10 @@
         {
             ExceedAnimal = 4101
         }
+
+        public enum User
+        {
+            SkinNotFound = 4201
+        }
     }
 }

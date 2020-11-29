@@ -12,6 +12,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 using HitToMeet.API.ViewModels.Skin;
+using HitToMeet.API.Responses.User;
+using HitToMeet.API.Requests.User;
+using HitToMeet.BL.Contracts.User;
 
 namespace HitToMeet.Controllers
 {
@@ -30,16 +33,17 @@ namespace HitToMeet.Controllers
         {
             var userId = this.User.Claims.First(c => c.Type == StringConstants.JwtClaimId).Value;
             var user = await profileService.GetUserProfile(userId);
-            return Ok(user);
+            return Ok(mapper.Map<UserProfileResponse>(user));
         }
-        /*
-        [HttpPost((API.Routes.DefaultRoutes.Profile.SetProfile))]
-        public async Task<IActionResult> SetProfile()
+        
+        [HttpPost((API.Routes.DefaultRoutes.Profile.UpdateProfile))]
+        public async Task<IActionResult> UpdateProfile([FromBody]UpdateUserProfileRequest request)
         {
             var userId = this.User.Claims.First(c => c.Type == StringConstants.JwtClaimId).Value;
-            var skins = await this.casinoService.GetAvailableSkinsForUser(userId);
-            return Ok(skins.Select(s => mapper.Map<SkinViewModel>(s)));
+            UpdateUserProfileContract contract = mapper.Map<UpdateUserProfileContract>(request);
+            await profileService.UpdateUserProfile(userId, contract);
+            return Ok();
         }
-        */
+        
     }
 }

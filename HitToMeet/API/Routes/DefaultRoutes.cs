@@ -23,5 +23,10 @@
         {
             public const string QuizPath = Base + "/quiz";
         }
+
+        public static class Casino
+        {
+            public const string GetAvailableSkins = Base + "/availableSkins";
+        }
     }
 }

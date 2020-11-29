@@ -26,7 +26,13 @@
 
         public static class Casino
         {
-            public const string GetAvailableSkins = Base + "/availableSkins";
+            public const string GetAvailableSkins = Base + "/casino";
+        }
+
+        public static class Profile
+        {
+            public const string GetProfile = Base + "/profile";
+            public const string SetProfile = Base + "/profile";
         }
     }
 }

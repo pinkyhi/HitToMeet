@@ -29,7 +29,7 @@ namespace HitToMeet.BL.Services
         public async Task<bool> HasAnimal(string userId)
         {
             User user = await this.userManager.FindByIdAsync(userId);
-            return user.AnimalId == null;
+            return user.AnimalId != null;
         }
 
         public async Task ClearAnimal(string userId)

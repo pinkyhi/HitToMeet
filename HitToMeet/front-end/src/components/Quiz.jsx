@@ -79,13 +79,13 @@ class Quiz extends React.Component {
                             <div className={l.dem}>
                                 <label className={l.containers}>1
                      <input type="radio" onChange={this.handleChange} value="2" name="radio" />
-                                    <span className={l.checkmark}>ВАРИАНТ ДВА</span>
+                                    <span className={l.checkmark}>{this.state.questions[0].answers[1].title}</span>
                                 </label>
                             </div>
                             <div className={l.dem}>
                                 <label className={l.containers}>1
                      <input type="radio" onChange={this.handleChange} value="2" name="radio" />
-                                    <span className={l.checkmark}>ВАРИАНТ ТРИ</span>
+                                    <span className={l.checkmark}>{this.state.questions[0].answers[2].title}</span>
                                 </label>
                             </div>
 

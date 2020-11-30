@@ -9,7 +9,7 @@ class Quiz extends React.Component {
 
     constructor(props) {
         super(props);
-
+        
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleLoad = this.handleLoad.bind(this);
 
@@ -71,7 +71,7 @@ class Quiz extends React.Component {
 
                             <div className={l.demail}>
                                 <label className={l.containers}>
-                                    <input type="radio" onChange={this.handleChange} value="1" name="radio" />
+                                    <input type="radio" onChange={this.handleChange} value="1" name="radio" checked/>
                                     <span className={l.checkmark}>{this.state.questions[0].answers[0].title}</span>
                                 </label>
                             </div>

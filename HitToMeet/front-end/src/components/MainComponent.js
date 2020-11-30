@@ -6,6 +6,7 @@ import Quiz from './Quiz';
 import Footer from './FooterComponent';
 import SuccessRegistration from './SuccessRegistration';
 import PersonalArea from './PersonalAreaComponent';
+import Roulette from './RouletteComponent';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createAccount, Login, GetQuestion, RefreshToken } from '../redux/ActionCreators';
@@ -34,7 +35,9 @@ class Main extends Component {
                     <Route exact path="/registration" component={() => <Registration createAccount={this.props.createAccount}></Registration>}></Route>
                     <Route path="/successreg" component={SuccessRegistration}></Route>
                     <Route path="/quiz" component={() => <Quiz GetQuestion={this.props.GetQuestion}></Quiz>}></Route>
-                    <Redirect to="/login"></Redirect>
+                    <Route path="/personalarea" component={PersonalArea}></Route>
+                    <Route path="/roulette" component={Roulette}></Route>
+                   <Redirect to="/login"></Redirect>
                 </Switch>
                 <Footer></Footer>
             </div>

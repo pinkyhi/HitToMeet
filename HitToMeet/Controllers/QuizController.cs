@@ -28,7 +28,7 @@ namespace HitToMeet.Controllers
             this.quizService = quizService;
         }
 
-        [HttpGet((API.Routes.DefaultRoutes.Quiz.QuizPath))]
+        [HttpGet(API.Routes.DefaultRoutes.Quiz.QuizPath)]
         public async Task<IActionResult> GetQuiz()
         {
             var userId = this.User.Claims.First(c => c.Type == StringConstants.JwtClaimId).Value;

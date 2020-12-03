@@ -160,6 +160,15 @@ namespace HitToMeet.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Such skill not found.
+        /// </summary>
+        public static string SkinNotFoundException {
+            get {
+                return ResourceManager.GetString("SkinNotFoundException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Token isn&apos;t expired.
         /// </summary>
         public static string TokenIsNotExpiredExeption {

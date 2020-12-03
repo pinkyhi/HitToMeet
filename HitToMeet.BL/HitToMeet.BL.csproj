@@ -17,8 +17,4 @@
     <ProjectReference Include="..\HitToMeet.DAL\HitToMeet.DAL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-  </ItemGroup>
-
 </Project>

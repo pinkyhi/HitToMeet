@@ -25,5 +25,14 @@ namespace HitToMeet.DAL.Managers
                 .Include(x => x.UserSkins)
                 .SingleAsync(x => x.Id.Equals(userId));
         }
+
+        public async Task<User> FindProfileByIdAsync(string userId)
+        {
+            return await dbContext.Users
+                .Include(x => x.UserSkins)
+                .ThenInclude(x => x.Skin)
+                .Include(x => x.Animal)
+                .SingleAsync(x => x.Id.Equals(userId));
+        }
     }
 }

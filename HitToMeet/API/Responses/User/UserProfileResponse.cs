@@ -20,6 +20,10 @@ namespace HitToMeet.API.Responses.User
 
         public string Description { get; set; }
 
+        public string UserName { get; set; }
+
+        public string Email { get; set; }
+
         public int Sex { get; set; }
 
         public int PointsBalance { get; set; }

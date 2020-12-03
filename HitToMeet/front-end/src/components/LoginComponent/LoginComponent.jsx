@@ -3,6 +3,7 @@ import { Label, Col, Row, Button } from 'reactstrap';
 import { Control, Form, Errors, actions } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 import l from './LogIn.module.css';
+import { baseUrl } from '../baseUrl';
 
 
 const required = (val) => val && val.length;
@@ -16,10 +17,33 @@ class LogIn extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    
-    handleSubmit(values) {
-        this.props.Login(values.email, values.password);
-        window.location.href = "/";
+
+    handleSubmit(value) {
+        const newAccount = {
+            Email: value.email,
+            Password: value.password
+        }
+        fetch(baseUrl + "identity/Login", {
+            method: 'POST',
+            body: JSON.stringify(newAccount),
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json; charset=UTF-8'
+            },
+            credentials: 'same-origin'
+        })
+            .then(response => response.json())
+            .then(
+                (response) => {
+                    document.cookie = "refreshToken=" + response.refreshToken;
+                    document.cookie = "JwtClaimId=" + response.token;
+                    window.location.href = "/quiz";
+                },
+                (error) => {
+                    console.log('Post account ', error);
+                    alert('Your account could not be posted\nError: ' + error);
+                }
+            )
     }
 
     render() {
@@ -28,34 +52,34 @@ class LogIn extends Component {
                 <div className={l.login} >
                     <h2 className={l.Title}>Вход</h2>
                     <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
-                        <Row className = {l.demail}>
-                            
-                                <Label htmlFor="email" md={2}></Label>
-                                <Control.text model=".email" id="email" name="email"
-                                    placeholder="Введите email"
-                                    className ={l.placeinput}
-                                    validators={{
-                                        required, validEmail
-                                    }}
-                                />
-                           
+                        <Row className={l.demail}>
+
+                            <Label htmlFor="email" md={2}></Label>
+                            <Control.text model=".email" id="email" name="email"
+                                placeholder="Введите email"
+                                className={l.placeinput}
+                                validators={{
+                                    required, validEmail
+                                }}
+                            />
+
                             <Errors
                                 className="text-danger"
                                 model=".email"
                                 show="touched"
                             />
                         </Row>
-                        <Row className = {l.demail1}>
-                            
-                                <Label htmlFor="password" md={2}></Label>
-                                <Control.text model=".password" id="password" name="password"
-                                    placeholder="Введите пароль" type = "password"
-                                    className ={l.placeinput}
-                                    validators={{
-                                        required, minLength: minLength(4), maxLength: maxLength(15)
-                                    }}
-                                />
-                            
+                        <Row className={l.demail1}>
+
+                            <Label htmlFor="password" md={2}></Label>
+                            <Control.text model=".password" id="password" name="password"
+                                placeholder="Введите пароль" type="password"
+                                className={l.placeinput}
+                                validators={{
+                                    required, minLength: minLength(4), maxLength: maxLength(15)
+                                }}
+                            />
+
                             <Errors
                                 className="text-danger"
                                 model=".password"
@@ -64,18 +88,18 @@ class LogIn extends Component {
                         </Row>
                         <Row >
                             <Col md={{ size: 10, offset: 0 }}>
-                            <div className={l.dibutton}>
-                                <Button type="submit" className={l.butlog}>
-                                    Вход
+                                <div className={l.dibutton}>
+                                    <Button type="submit" className={l.butlog}>
+                                        Вход
                                     </Button>
-                                    </div>
+                                </div>
                             </Col>
                         </Row>
                     </Form>
                     <Link to="/registration">
                         <div className={l.dibuttonsig}>
-                        <Button className={l.butsig} > 
-                            Регистрация
+                            <Button className={l.butsig} >
+                                Регистрация
                         </Button>
                         </div>
                     </Link>

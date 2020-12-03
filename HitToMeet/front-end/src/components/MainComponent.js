@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from './HeaderComponent';
+import Header from './HeaderComponent/HeaderComponent';
 import LogIn from './LoginComponent/LoginComponent';
 import Registration from './RegistrationComponent';
 import Quiz from './QuizComponent/QuizComponent';

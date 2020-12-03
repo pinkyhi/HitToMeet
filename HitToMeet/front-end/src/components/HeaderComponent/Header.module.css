@@ -1,0 +1,14 @@
+.navlink_custom {
+    color: #979797;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.navlink_custom:hover {
+    color: #adadad;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 4px solid;
+    border-radius: 10%;
+    text-decoration: none;
+}

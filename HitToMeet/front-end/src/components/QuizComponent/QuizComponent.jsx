@@ -27,18 +27,71 @@ class Quiz extends Component {
     }
 
     changeSummaryValue() {
-        if (this.state.index != this.state.questions.length && this.state.currentValue) {
+        if (this.state.index != this.state.questions.length - 1 && this.state.currentValue) {
             this.setState((state, props) => ({
                 summaryValue: parseInt(state.summaryValue) + parseInt(state.currentValue),
                 currentValue: 0,
                 index: parseInt(state.index) + 1
             }));
-        } else if (!this.state.currentValue){
+        } else if (this.state.index == this.state.questions.length - 1) {
+            const points = this.state.summaryValue;
+            var animalId = 0;
+            if (points == 12) {
+                animalId = 1;
+            } else if (points == 13 || points == 14) {
+                animalId = 2;
+            } else if (points == 15 || points == 16) {
+                animalId = 4;
+            } else if (points == 17 || points == 18) {
+                animalId = 5;
+            } else if (points == 19 || points == 20) {
+                animalId = 6;
+            } else if (points == 21 || points == 22) {
+                animalId = 7;
+            } else if (points == 23 || points == 24) {
+                animalId = 8;
+            } else if (points == 25 || points == 26) {
+                animalId = 9;
+            } else if (points == 27 || points == 28) {
+                animalId = 10;
+            } else if (points == 29 || points == 30) {
+                animalId = 11;
+            } else if (points == 31 || points == 32) {
+                animalId = 12;
+            } else if (points == 33 || points == 34) {
+                animalId = 13;
+            } else if (points == 35 || points == 36) {
+                animalId = 14;
+            } else {
+                return;
+            }
+
+            if (animalId > 0) {
+                const Result = {
+                    id: animalId
+                }
+                fetch(baseUrl + "quiz", {
+                    method: "PUT",
+                    body: JSON.stringify(Result),
+                    headers: {
+                        'Accept': 'application/json, text/plain, */*',
+                        'Authorization': `Bearer ${this.getCookie("JwtClaimId")}`,
+                        'Content-Type': 'application/json; charset=UTF-8'
+                    },
+                    credentials: 'same-origin'
+                })
+            }
+
+        } else if (!this.state.currentValue) {
             alert("Выберите вариант ответа")
         }
     }
 
     componentDidMount() {
+        if (this.getCookie("JwtClaimId") == null) {
+            window.location.href="/login";
+        }
+
         fetch(baseUrl + "quiz", {
             headers: {
                 'Accept': 'application/json, text/plain, */*',

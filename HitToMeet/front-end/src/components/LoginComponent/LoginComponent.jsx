@@ -19,6 +19,7 @@ class LogIn extends Component {
     
     handleSubmit(values) {
         this.props.Login(values.email, values.password);
+        window.location.href = "/";
     }
 
     render() {

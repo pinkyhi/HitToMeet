@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace HitToMeet.Core.Exceptions
 {
-    public class InvalidPasswordException : HitToMeetException
+    public class InvalidPasswordException : BaseAppException
     {
         public InvalidPasswordException()
             : base(ErrorMessages.InvalidPasswordException)

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace HitToMeet.Core.Exceptions.Quiz
 {
-    public class ExceedAnimalException : HitToMeetException
+    public class ExceedAnimalException : BaseAppException
     {
         public ExceedAnimalException()
             : base(ErrorMessages.ExceedAnimalException)

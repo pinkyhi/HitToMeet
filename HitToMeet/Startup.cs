@@ -27,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using HitToMeet.LiqPay.Interfaces;
 
 namespace HitToMeet
 {
@@ -136,6 +137,7 @@ namespace HitToMeet
 
         private void InstallServices(IServiceCollection services)
         {
+            services.AddScoped<ILiqPayService, LiqPayService>();
             services.AddScoped<IIdentityService, IdentityService>();
         }
 

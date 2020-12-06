@@ -1,0 +1,56 @@
+.custom_btn {
+    width: 100%;
+    min-height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #020217;
+    color: white;
+}
+
+.custom_btn:hover {
+    background-color: gray;
+    color: #020217;
+}
+
+.custom_btn:focus {
+    background-color: white;
+    color: #020217;
+}
+
+.custom_btn_next {
+    border: none;
+    background-color: #3355EC;
+    width: 100%;
+    margin-top: 40px;
+    min-height: 50px;
+}
+
+.custom_btn_next:hover {
+    background-color: #3355EC;
+}
+
+.custom_btn_next:focus {
+    background-color: #3355EC;
+}
+
+.custom_btn_prev {
+    border: none;
+    background-color: #787a83;
+    width: 100%;
+    margin-top: 40px;
+    min-height: 50px;
+}
+
+.custom_btn_prev:hover {
+    background-color: #787a83;
+}
+
+.custom_btn_prev:focus {
+    background-color: #787a83;
+}
+
+.errormsg {
+    background-color: rgb(255, 68, 68);
+    color: white;
+    border: 1px solid red;
+}

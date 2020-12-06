@@ -28,7 +28,7 @@ namespace HitToMeet.Controllers
             this.quizService = quizService;
         }
 
-        [HttpGet((API.Routes.DefaultRoutes.Quiz.QuizPath))]
+        [HttpGet(API.Routes.DefaultRoutes.Quiz.QuizPath)]
         public async Task<IActionResult> GetQuiz()
         {
             var userId = this.User.Claims.First(c => c.Type == StringConstants.JwtClaimId).Value;
@@ -45,11 +45,16 @@ namespace HitToMeet.Controllers
         }
 
         [HttpPut((API.Routes.DefaultRoutes.Quiz.QuizPath))]
-        public async Task<IActionResult> SetAnimal(int id)
+        public async Task<IActionResult> SetAnimal([FromBody] AnimalId animal)
         {
             var userId = this.User.Claims.First(c => c.Type == StringConstants.JwtClaimId).Value;
-            await this.quizService.AddAnimalToUser(userId, id);
+            await this.quizService.AddAnimalToUser(userId, animal.id);
             return Ok();
+        }
+
+        public class AnimalId
+        {
+            public int id { get; set; }
         }
     }
 }

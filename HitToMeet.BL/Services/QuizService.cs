@@ -29,7 +29,7 @@ namespace HitToMeet.BL.Services
         public async Task<bool> HasAnimal(string userId)
         {
             User user = await this.userManager.FindByIdAsync(userId);
-            return user.AnimalId == null;
+            return user.AnimalId != null;
         }
 
         public async Task ClearAnimal(string userId)
@@ -43,6 +43,55 @@ namespace HitToMeet.BL.Services
         {
             User user = await this.userManager.FindByIdAsync(userId);
             user.AnimalId = animalId;
+            int standartSkinId = 0;
+            switch(animalId)
+            {
+                case 1:
+                    standartSkinId = 1;
+                    break;
+                case 2:
+                    standartSkinId = 13;
+                    break;
+                case 4:
+                    standartSkinId = 14;
+                    break;
+                case 5:
+                    standartSkinId = 15;
+                    break;
+                case 6:
+                    standartSkinId = 16;
+                    break;
+                case 7:
+                    standartSkinId = 17;
+                    break;
+                case 8:
+                    standartSkinId = 18;
+                    break;
+                case 9:
+                    standartSkinId = 19;
+                    break;
+                case 10:
+                    standartSkinId = 20;
+                    break;
+                case 11:
+                    standartSkinId = 25;
+                    break;
+                case 12:
+                    standartSkinId = 26;
+                    break;
+                case 13:
+                    standartSkinId = 27;
+                    break;
+                case 14:
+                    standartSkinId = 33;
+                    break;
+            }
+            UserSkin newSkin = new UserSkin();
+            newSkin.SkinId = standartSkinId;
+            newSkin.User = user;
+            newSkin.SkinStatus = 1;
+
+            await repository.AddAsync<UserSkin>(newSkin);
             await userManager.UpdateAsync(user);
         }
 

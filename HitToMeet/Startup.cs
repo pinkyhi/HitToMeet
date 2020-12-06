@@ -10,8 +10,6 @@ using HitToMeet.Filters.ExceptionFilters;
 using HitToMeet.Mappers;
 using HitToMeet.WebServices.Interfaces;
 using HitToMeet.WebServices.Services;
-using HitToMeet.BL.Interfaces;
-using HitToMeet.BL.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +26,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using HitToMeet.LiqPay.Interfaces;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using HitToMeet.BL.Interfaces;
+using HitToMeet.BL.Services;
 
 namespace HitToMeet
 {
@@ -94,6 +95,15 @@ namespace HitToMeet
                 });
 
                 app.UseStaticFiles();
+                app.UseSpa(spa =>
+                {
+                    spa.Options.SourcePath = "front-end";
+
+                    if (env.IsDevelopment())
+                    {
+                        spa.UseReactDevelopmentServer(npmScript: "start");
+                    }
+                });
             }
             catch (Exception ex)
             {

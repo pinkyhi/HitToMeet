@@ -1,0 +1,28 @@
+.NavBar{
+    position: absolute;
+    width: 77px;
+    height: 462px;
+    background-color: #292929;
+    border-radius: 8px;
+    margin-left: 75px;
+    margin-top: 150px;
+}
+.iconNav{
+    margin-left: 5px;
+    
+}
+.iconcolor  {
+    font-size: 35px;
+    color: #979797;
+}
+.iconcolor:hover  {
+    
+    color: #d6d6d6;
+}
+a.iconcolor{
+    color: brown;
+}
+.iconcolor:active  {
+    
+    color: #d6d6d6;
+}

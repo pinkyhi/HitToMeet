@@ -36,7 +36,7 @@ class NavBar extends Component {
                    
                     <Navbar dark className="NavBar" >
                                     <NavItem className ="iconNav">
-                                        <NavLink to="#" >
+                                        <NavLink to="/chatlist" >
                                         <span className = "iconcolor">
                                              <i class="far fa-comment-alt"></i>
                                              </span>
@@ -50,7 +50,7 @@ class NavBar extends Component {
                                              </NavLink>
                                     </NavItem>
                                     <NavItem className ="iconNav">
-                                    <NavLink to="/personalarea" >
+                                    <NavLink to="/profile" >
                                         <span className = "iconcolor">
                                         <i class="far fa-user-circle"></i>
                                              </span>

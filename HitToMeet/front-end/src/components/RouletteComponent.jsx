@@ -79,11 +79,10 @@ class Roulette extends Component {
                                         
                                     </ul>
                                         <ul className="list">
-                                            <li><img src="assets/skin/cat.png" alt=""/></li>
-                                            <li><img src="assets/skin/sheep.png" alt=""/></li>
-                                            <li><img src="assets/skin/fish.png" alt=""/></li>
-                                            <li><img src="assets/skin/eagle.png" alt=""/></li>
-                                            <li><img src="assets/skin/wolf.png" alt=""/></li>
+                                            <li><img src="assets/skin/question.png" alt=""/></li>
+                                            <li><img src="assets/skin/50star.png" alt=""/></li>
+                                            <li><img src="assets/skin/25star.png" alt=""/></li>
+                                            <li><img src="assets/skin/5mon.png" alt=""/></li>
                                         </ul>
                                     </div>
                                     </div>

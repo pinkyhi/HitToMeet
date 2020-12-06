@@ -5,24 +5,24 @@
     using HitToMeet.Core.Enums;
     using HitToMeet.Core.Resources;
 
-    public class HitToMeetException : Exception
+    public class BaseAppException : Exception
     {
-        public HitToMeetException()
+        public BaseAppException()
             : base(ErrorMessages.HitToMeetException)
         {
         }
 
-        public HitToMeetException(string message)
+        public BaseAppException(string message)
             : base(message)
         {
         }
 
-        public HitToMeetException(string message, Exception innerException)
+        public BaseAppException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
 
-        protected HitToMeetException(SerializationInfo info, StreamingContext context)
+        protected BaseAppException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }

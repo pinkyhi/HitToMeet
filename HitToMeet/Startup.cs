@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using HitToMeet.LiqPay.Interfaces;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using HitToMeet.BL.Interfaces;
 using HitToMeet.BL.Services;
@@ -146,6 +147,7 @@ namespace HitToMeet
 
         private void InstallServices(IServiceCollection services)
         {
+            services.AddScoped<ILiqPayService, LiqPayService>();
             services.AddScoped<IIdentityService, IdentityService>();
         }
 

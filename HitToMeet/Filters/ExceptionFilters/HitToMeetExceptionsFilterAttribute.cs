@@ -20,13 +20,13 @@ namespace HitToMeet.Filters.ExceptionFilters
 
         public void OnException(ExceptionContext context)
         {
-            if (context.Exception.GetType().IsSubclassOf(typeof(HitToMeetException)))
+            if (context.Exception.GetType().IsSubclassOf(typeof(BaseAppException)))
             {
                 var exception = context.Exception;
                 ObjectResult result = new ObjectResult(new ErrorResponse
                 {
                     Message = exception.Message,
-                    SubCode = (exception as HitToMeetException).Code
+                    SubCode = (exception as BaseAppException).Code
                 })
                 {
                     StatusCode = StatusCodes.Status400BadRequest

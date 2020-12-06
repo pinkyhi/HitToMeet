@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace HitToMeet.Core.Exceptions
 {
-    public class UserUnknownException : HitToMeetException
+    public class UserUnknownException : BaseAppException
     {
         public UserUnknownException()
             : base(ErrorMessages.UserUnknownException)

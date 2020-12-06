@@ -48,3 +48,9 @@
 .custom_btn_prev:focus {
     background-color: #787a83;
 }
+
+.errormsg {
+    background-color: rgb(255, 68, 68);
+    color: white;
+    border: 1px solid red;
+}

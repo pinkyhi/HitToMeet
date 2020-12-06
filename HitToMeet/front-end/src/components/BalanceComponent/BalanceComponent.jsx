@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Button } from 'reactstrap';
-import { Form } from 'react-redux-form';
+import { Row, Col, Button, Form } from 'reactstrap';
 import style from "./Balance.module.css";
 
 class Balance extends Component {
@@ -25,7 +24,7 @@ class Balance extends Component {
                 <div className="row">
                     <div className="col-12">
                         <h3 className="text-center mt-5 mb-5">Пополнить баланс</h3>
-                        <Form model="feedback mt-5 mb-5">
+                        <Form className="mt-5 mb-5">
                             <Row className="form-group mt-5">
                                 <Col sm="12" md={{ size: 6, offset: 3 }} className="text-center">
                                     <Button className={style.paybtn} onClick={(evt) => this.changeValue(evt.target.value)} value="35">

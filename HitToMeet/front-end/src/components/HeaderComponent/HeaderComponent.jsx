@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Col } from 'reactstrap';
 import UserIcon from '../UserIconComponent';
-import { getCookie } from '../baseUrl';
+import { baseUrl, getCookie } from '../baseUrl';
 import style from './Header.module.css';
 
 class Header extends Component {
@@ -11,7 +11,12 @@ class Header extends Component {
         super(props);
 
         this.state = {
-            isNavOpen: false
+            isNavOpen: false,
+            username: null,
+            userSkin: "",
+            stars: null,
+            diamonds: null,
+            isLoaded: false
         }
         this.toggleNav = this.toggleNav.bind(this);
     }
@@ -23,11 +28,43 @@ class Header extends Component {
     }
 
     componentDidMount() {
-
+        if (getCookie('JwtClaimId')) {
+            fetch(baseUrl + "profile", {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Authorization': `Bearer ${getCookie("JwtClaimId")}`,
+                    'Content-Type': 'application/json; charset=UTF-8'
+                },
+                credentials: 'same-origin'
+            })
+                .then(response => response.json())
+                .then(
+                    (response) => {
+                        var userImg = "";
+                        response.userSkins.forEach(element => {
+                            if (element.skinStatus) {
+                                userImg = element.skin.imgUrl;
+                            }
+                        });
+                        this.setState({
+                            username: response.userName,
+                            userSkin: "assets/skin/" + userImg,
+                            stars: response.pointsBalance,
+                            diamonds: response.balance,
+                            isLoaded: true
+                        });
+                    },
+                    (error) => {
+                        console.log('Get account information', error);
+                        alert('Your account information could not be gotten\nError: ' + error);
+                    }
+                )
+        }
     }
 
     render() {
-        if (getCookie('JwtClaimId')) {
+        if (getCookie('JwtClaimId') && this.state.isLoaded) {
             return (
                 <>
                     <Navbar dark className="header-nav" expand="lg">
@@ -49,16 +86,16 @@ class Header extends Component {
                                     </NavItem>
                                     <NavItem className="ml-5 mt-1">
                                         <Col md={12} className="text-center">
-                                            <p>Никнейм</p>
+                                            <p>{this.state.username}</p>
                                             <p>
-                                                <img src="assets/images/star.svg" width="20" className="mb-1"></img> 100
-                                                <img src="assets/images/icon.svg" width="16" className="mb-1 ml-3"></img> 100
+                                                <img src="assets/images/star.svg" width="20" className="mb-1"></img> {this.state.stars}
+                                                <img src="assets/images/icon.svg" width="16" className="mb-1 ml-3"></img> {this.state.diamonds}
                                             </p>
                                         </Col>
                                     </NavItem>
                                     <NavItem className="mt-2 ml-lg-0 ml-sm-5 text-center">
                                         <Col md={12}>
-                                            <img src="assets/images/user-avatar1.png" width="56"></img>
+                                            <img src={this.state.userSkin} width="56"></img>
                                         </Col>
                                     </NavItem>
                                 </Nav>

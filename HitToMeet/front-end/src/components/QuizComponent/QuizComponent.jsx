@@ -89,9 +89,8 @@ class Quiz extends Component {
 
     componentDidMount() {
         if (this.getCookie("JwtClaimId") == null) {
-            window.location.href="/login";
+            window.location.href = "/login";
         }
-
         fetch(baseUrl + "quiz", {
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -103,14 +102,20 @@ class Quiz extends Component {
             .then(result => result.json())
             .then(
                 (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        questions: result.questions
-                    });
+                    if (result.message && result.message.length) {
+                        this.setState({
+                            error: "You already have an animal."
+                        });
+                    } else {
+                        this.setState({
+                            isLoaded: true,
+                            questions: result.questions
+                        });
+                    }
                 },
                 (error) => {
                     this.setState({
-                        isLoaded: true,
+                        isLoaded: false,
                         error
                     });
                 }
@@ -130,6 +135,16 @@ class Quiz extends Component {
 
     render() {
         if (!this.state.isLoaded) {
+            if (this.state.error != null) {
+                return (
+                    <div className="container mt-5">
+                        <Col md={{size: 6, offset: 3}} className="text-center">
+                            <p className={style.errormsg}>{this.state.error}</p>
+                        </Col>
+                    </div>
+                );
+
+            }
             return (
                 <div className="text-center">
                     <i className="fa fa-spinner fa-spin"></i>

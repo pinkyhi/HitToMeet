@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace HitToMeet.Core.Exceptions
 {
-    public class RefreshTokenWrongJtiException : HitToMeetException
+    public class RefreshTokenWrongJtiException : BaseAppException
     {
         public RefreshTokenWrongJtiException()
            : base(ErrorMessages.RefreshTokenWrongJtiException)

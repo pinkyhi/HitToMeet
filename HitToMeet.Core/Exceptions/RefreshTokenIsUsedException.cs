@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace HitToMeet.Core.Exceptions
 {
-    public class RefreshTokenIsUsedException : HitToMeetException
+    public class RefreshTokenIsUsedException : BaseAppException
     {
         public RefreshTokenIsUsedException()
            : base(ErrorMessages.RefreshTokenIsUsedException)

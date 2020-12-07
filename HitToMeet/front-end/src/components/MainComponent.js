@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './HeaderComponent/HeaderComponent';
+import NavBar from './NavBarComponent/NavBarComponent';
 import LogIn from './LoginComponent/LoginComponent';
 import Registration from './RegistrationComponent';
 import Quiz from './QuizComponent/QuizComponent';
@@ -32,6 +33,7 @@ class Main extends Component {
         return (
             <div>
                 <Header></Header>
+                <NavBar></NavBar>
                 <Switch>
                     <Route path="/home"></Route>
                     <Route path="/login" component={() => <LogIn Login={this.props.Login}></LogIn>}></Route>

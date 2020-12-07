@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace HitToMeet.Core.Exceptions
 {
-    public class EmailOccupiedException : HitToMeetException
+    public class EmailOccupiedException : BaseAppException
     {
         public EmailOccupiedException()
            : base(ErrorMessages.EmailOccupiedException)

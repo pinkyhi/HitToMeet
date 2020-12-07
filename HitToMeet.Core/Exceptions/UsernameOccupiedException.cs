@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace HitToMeet.Core.Exceptions
 {
-    public class UsernameOccupiedException : HitToMeetException
+    public class UsernameOccupiedException : BaseAppException
     {
         public UsernameOccupiedException()
             : base(ErrorMessages.UsernameOccupiedException)

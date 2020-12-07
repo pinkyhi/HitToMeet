@@ -7,7 +7,7 @@ using System.Text;
 
 namespace HitToMeet.Core.Exceptions.User
 {
-    public class SkinNotFoundException : HitToMeetException
+    public class SkinNotFoundException : BaseAppException
     {
         public SkinNotFoundException()
             : base(ErrorMessages.SkinNotFoundException)

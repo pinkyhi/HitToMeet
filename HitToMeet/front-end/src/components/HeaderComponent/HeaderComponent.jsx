@@ -54,6 +54,11 @@ class Header extends Component {
                             diamonds: response.balance,
                             isLoaded: true
                         });
+                        if (this.state.userSkin == "assets/skin/") {
+                            this.setState({
+                                userSkin: "assets/images/user-avatar1.png"
+                            });
+                        }
                     },
                     (error) => {
                         console.log('Get account information', error);
@@ -69,7 +74,7 @@ class Header extends Component {
                 <>
                     <Navbar dark className="header-nav" expand="lg">
                         <div className="container">
-                            <NavbarBrand href="/">
+                            <NavbarBrand href="/chatlist">
                                 <img src="assets/images/logo.png" width="300" height="52"></img>
                             </NavbarBrand>
                             <NavbarToggler onClick={this.toggleNav} className="navbar-toggler-right"></NavbarToggler>
@@ -84,7 +89,7 @@ class Header extends Component {
                                     <NavItem className="mr-5 mt-4">
                                         <NavLink to="/" className={style.navlink_custom}>Помощь</NavLink>
                                     </NavItem>
-                                    <NavItem className="ml-5 mt-1">
+                                    <NavItem className="ml-md-5 mt-1">
                                         <Col md={12} className="text-center">
                                             <p>{this.state.username}</p>
                                             <p>
@@ -95,7 +100,7 @@ class Header extends Component {
                                     </NavItem>
                                     <NavItem className="mt-2 ml-lg-0 ml-sm-5 text-center">
                                         <Col md={12}>
-                                            <img src={this.state.userSkin} width="56"></img>
+                                            <img src={ this.state.userSkin } width="56"></img>
                                         </Col>
                                     </NavItem>
                                 </Nav>

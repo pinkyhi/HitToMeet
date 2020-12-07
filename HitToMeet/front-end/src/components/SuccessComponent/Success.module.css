@@ -1,0 +1,7 @@
+.resultImage {
+    margin-top: 50px;
+    border-radius: 50%;
+    -moz-box-shadow:0 0 100px rgb(251, 255, 0);
+    -webkit-box-shadow:0 0 100px rgb(251, 255, 0); 
+    box-shadow:0 0 200px rgb(251, 255, 0);
+}

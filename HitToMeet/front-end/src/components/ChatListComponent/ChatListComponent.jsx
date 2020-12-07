@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'reactstrap';
+import { getCookie } from '../baseUrl';
 import style from './ChatList.module.css';
+import { withRouter } from 'react-router-dom';
 
 class ChatList extends Component {
     constructor(props) {
@@ -12,7 +14,9 @@ class ChatList extends Component {
     }
 
     componentDidMount() {
-
+        if (!getCookie('JwtClaimId')) {
+            this.props.history.push('/login');
+        }
     }
 
     render() {
@@ -46,4 +50,4 @@ class ChatList extends Component {
     }
 }
 
-export default ChatList;
+export default withRouter(ChatList);

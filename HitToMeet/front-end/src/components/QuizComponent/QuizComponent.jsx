@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Col, Row } from 'reactstrap';
 import style from './Quiz.module.css';
 import { baseUrl } from '../baseUrl';
+import { withRouter } from 'react-router-dom';
 
 class Quiz extends Component {
     constructor(props) {
@@ -80,6 +81,11 @@ class Quiz extends Component {
                     },
                     credentials: 'same-origin'
                 })
+                    .then(response => {
+                        if (response.ok) {
+                            this.props.history.push('/success')
+                        }
+                    })
             }
 
         } else if (!this.state.currentValue) {
@@ -102,6 +108,9 @@ class Quiz extends Component {
             .then(result => result.json())
             .then(
                 (result) => {
+                    if (result.message == "You already have an animal") {
+                        this.props.history.push('/chatlist');
+                    }
                     if (result.message && result.message.length) {
                         this.setState({
                             error: "You already have an animal."
@@ -138,7 +147,7 @@ class Quiz extends Component {
             if (this.state.error != null) {
                 return (
                     <div className="container mt-5">
-                        <Col md={{size: 6, offset: 3}} className="text-center">
+                        <Col md={{ size: 6, offset: 3 }} className="text-center">
                             <p className={style.errormsg}>{this.state.error}</p>
                         </Col>
                     </div>
@@ -200,4 +209,4 @@ class Quiz extends Component {
     }
 }
 
-export default Quiz;
+export default withRouter(Quiz);

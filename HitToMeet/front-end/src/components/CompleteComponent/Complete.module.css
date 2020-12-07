@@ -1,0 +1,13 @@
+.completeChar {
+    margin-top: 80px;
+    font-size: 8em;
+    color: #00FD19;
+    text-shadow: 0 0 200px #01FB19, 0 0 300px #01FB19, 0 0 40px #01FB19, 0 0 50px #01FB19, 0 0 60px #01FB19, 0 0 70px #01FB19, 0 0 80px #01FB19;
+}
+
+.custom_btn {
+    margin-top: 10px;
+    width: 100%;
+    min-height: 50px;
+    background-color: #3355EC;
+}

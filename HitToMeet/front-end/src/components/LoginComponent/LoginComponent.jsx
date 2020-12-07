@@ -1,9 +1,9 @@
 import { Component } from 'react';
 import { Label, Col, Row, Button } from 'reactstrap';
 import { Control, Form, Errors, actions } from 'react-redux-form';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import l from './LogIn.module.css';
-import { baseUrl } from '../baseUrl';
+import { baseUrl, getCookie } from '../baseUrl';
 
 
 const required = (val) => val && val.length;
@@ -18,11 +18,24 @@ class LogIn extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        if (getCookie('JwtClaimId')) {
+            this.props.history.push('/chatlist');
+        }
+    }
+
     handleSubmit(value) {
         const newAccount = {
             Email: value.email,
             Password: value.password
         }
+
+        if (getCookie('JwtClaimId')) {
+            window.location.href = '/chatlist';
+            return;
+        }
+
+
         fetch(baseUrl + "identity/Login", {
             method: 'POST',
             body: JSON.stringify(newAccount),
@@ -109,4 +122,4 @@ class LogIn extends Component {
     }
 }
 
-export default LogIn;
+export default withRouter(LogIn);

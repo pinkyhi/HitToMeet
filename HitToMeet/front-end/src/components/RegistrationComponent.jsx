@@ -1,9 +1,10 @@
 import { Component } from 'react';
 import { Label, Col, Row, Button } from 'reactstrap';
 import { Control, Form, Errors } from 'react-redux-form';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import l from './Registation.module.css';
-
+import { baseUrl, getCookie } from './baseUrl';
+import { withRoute } from 'react-router-dom';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -19,7 +20,28 @@ class Registration extends Component {
     }
 
     handleSubmit(values) {
-        this.props.createAccount(values.Email, values.UserName, values.Password);
+        const newAccount = {
+            Email: values.Email,
+            UserName: values.UserName,
+            Password: values.Password
+
+        }
+
+        fetch(baseUrl + 'identity/register', {
+            method: 'POST',
+            body: JSON.stringify(newAccount),
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json; charset=UTF-8'
+            },
+            credentials: 'same-origin'
+        })
+            .then(response => response.json())
+            .then(response => {
+                document.cookie = "refreshToken=" + response.refreshToken;
+                document.cookie = "JwtClaimId=" + response.token;
+                this.props.history.push('/complete');
+            })
     }
 
 
@@ -136,4 +158,4 @@ class Registration extends Component {
     }
 }
 
-export default Registration;
+export default withRouter(Registration);

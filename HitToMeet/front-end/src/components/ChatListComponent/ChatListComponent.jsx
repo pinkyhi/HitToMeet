@@ -19,16 +19,22 @@ class ChatList extends Component {
         }
     }
 
+    handleSubmit(){
+        window.location.replace("/chat");
+            
+    }
+
+
     render() {
         return (
             <div className="container">
                 <h3 className="text-center mt-5 mb-5">Сообщения</h3>
                 <Col sm="12" md={{ size: 8, offset: 2 }}>
-                    <Row>
-                        <div className={style.chatBlock}>
+                    <Row onClick={() => this.handleSubmit()}>
+                        <div className={style.chatBlock} >
                             <Row>
                                 <Col md={1} className="text-center mt-auto mb-auto mr-3 ml-1">
-                                    <img src="assets/skin/1 рыба/fishAnimal.png" width="60"></img>
+                                    <img src="assets/skin/1 рыба/fishAnimal.png" width="60" ></img>
                                 </Col>
                                 <Col md={9} className="mt-auto mb-auto">
                                     <span className={style.userNameAndDateTime}>Lol07 • 14:53</span><br></br>

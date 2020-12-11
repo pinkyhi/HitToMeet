@@ -10,6 +10,7 @@ import PersonalArea from './PersonalAreaComponent/PersonalAreaComponent';
 import Roulette from './RouletteComponent';
 import Balance from './BalanceComponent/BalanceComponent';
 import ChatList from './ChatListComponent/ChatListComponent';
+import Chat from './ChatComponent/ChatComponent';
 import Complete from './CompleteComponent/CompleteComponent';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -44,6 +45,7 @@ class Main extends Component {
                     <Route path="/roulette" component={Roulette}></Route>
                     <Route path="/balance" component={Balance}></Route>
                     <Route path="/chatlist" component={ChatList}></Route>
+                    <Route path="/chat" component={Chat}></Route>
                     <Route path="/complete" component={Complete}></Route>
                     <Redirect to="/login"></Redirect>
                 </Switch>

@@ -19,10 +19,6 @@
     
     color: #d6d6d6;
 }
-a.iconcolor{
+a.activecolor{
     color: brown;
-}
-.iconcolor:active  {
-    
-    color: #d6d6d6;
 }

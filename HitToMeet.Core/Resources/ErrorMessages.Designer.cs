@@ -70,6 +70,33 @@ namespace HitToMeet.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chat already exists.
+        /// </summary>
+        public static string ChatAlreadyExistsException {
+            get {
+                return ResourceManager.GetString("ChatAlreadyExistsException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chat is banned.
+        /// </summary>
+        public static string ChatIsBannedException {
+            get {
+                return ResourceManager.GetString("ChatIsBannedException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chat not found.
+        /// </summary>
+        public static string ChatNotFoundException {
+            get {
+                return ResourceManager.GetString("ChatNotFoundException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This email is already occupied.
         /// </summary>
         public static string EmailOccupiedException {

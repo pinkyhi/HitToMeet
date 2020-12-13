@@ -29,6 +29,9 @@ using HitToMeet.LiqPay.Interfaces;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using HitToMeet.BL.Interfaces;
 using HitToMeet.BL.Services;
+using HitToMeet.Hubs;
+using HitToMeet.Hubs.Interfaces;
+using HitToMeet.Hubs.Service;
 
 namespace HitToMeet
 {
@@ -56,6 +59,7 @@ namespace HitToMeet
             this.InstallServices(services);
             this.InstallSwagger(services);
             this.InstallAutoMapper(services);
+            this.InstallHubs(services);
 
             services.AddMvc().ConfigureApiBehaviorOptions(options =>
             {
@@ -92,6 +96,7 @@ namespace HitToMeet
                 app.UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers();
+                    endpoints.MapHub<ChatHub>("/chatsocket");
                 });
 
                 app.UseStaticFiles();
@@ -178,6 +183,7 @@ namespace HitToMeet
             services.AddScoped<IQuizService, QuizService>();
             services.AddScoped<ICasinoService, CasinoService>();
             services.AddScoped<IProfileService, ProfileService>();
+            services.AddScoped<IChatService, ChatService>();
         }
 
         private void InstallJwt(IServiceCollection services)
@@ -209,6 +215,10 @@ namespace HitToMeet
             JwtOptions.Secret = JwtOptions.Secret;
         }
 
+        private void InstallHubs(IServiceCollection services)
+        {
+            services.AddSingleton<IChatHubService, ChatHubService>();
+        }
         private void InstallSwagger(IServiceCollection services)
         {
             services.AddSwaggerGen(s =>

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HitToMeet.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201026185018_InitMigration")]
-    partial class InitMigration
+    [Migration("20201213041007_initMig")]
+    partial class initMig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,7 +52,7 @@ namespace HitToMeet.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AccepterId")
+                    b.Property<string>("AcceptorId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ChatStatus")
@@ -63,9 +63,9 @@ namespace HitToMeet.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccepterId");
+                    b.HasIndex("AcceptorId");
 
-                    b.HasIndex("InitiatorId", "AccepterId");
+                    b.HasIndex("InitiatorId", "AcceptorId");
 
                     b.ToTable("Chats");
                 });
@@ -144,15 +144,15 @@ namespace HitToMeet.DAL.Migrations
                     b.Property<string>("SenderId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("AccepterId")
+                    b.Property<string>("AcceptorId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Points")
                         .HasColumnType("int");
 
-                    b.HasKey("SenderId", "AccepterId");
+                    b.HasKey("SenderId", "AcceptorId");
 
-                    b.HasIndex("AccepterId");
+                    b.HasIndex("AcceptorId");
 
                     b.ToTable("Rate");
                 });
@@ -216,7 +216,7 @@ namespace HitToMeet.DAL.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("AnimalId")
+                    b.Property<int?>("AnimalId")
                         .HasColumnType("int");
 
                     b.Property<int>("Balance")
@@ -279,6 +279,8 @@ namespace HitToMeet.DAL.Migrations
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AnimalId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -442,9 +444,9 @@ namespace HitToMeet.DAL.Migrations
 
             modelBuilder.Entity("HitToMeet.DAL.Entities.Chat", b =>
                 {
-                    b.HasOne("HitToMeet.DAL.Entities.User", "Accepter")
+                    b.HasOne("HitToMeet.DAL.Entities.User", "Acceptor")
                         .WithMany("AcceptedChats")
-                        .HasForeignKey("AccepterId")
+                        .HasForeignKey("AcceptorId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("HitToMeet.DAL.Entities.User", "Initiator")
@@ -478,9 +480,9 @@ namespace HitToMeet.DAL.Migrations
 
             modelBuilder.Entity("HitToMeet.DAL.Entities.Rate", b =>
                 {
-                    b.HasOne("HitToMeet.DAL.Entities.User", "Accepter")
+                    b.HasOne("HitToMeet.DAL.Entities.User", "Acceptor")
                         .WithMany("AcceptedRates")
-                        .HasForeignKey("AccepterId")
+                        .HasForeignKey("AcceptorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -505,6 +507,14 @@ namespace HitToMeet.DAL.Migrations
                         .HasForeignKey("AnimalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HitToMeet.DAL.Entities.User", b =>
+                {
+                    b.HasOne("HitToMeet.DAL.Entities.Animal", "Animal")
+                        .WithMany("Users")
+                        .HasForeignKey("AnimalId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("HitToMeet.DAL.Entities.UserSkin", b =>

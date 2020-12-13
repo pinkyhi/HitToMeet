@@ -29,7 +29,7 @@ export const createAccount = (Email, UserName, Password) => (dispatch) => {
         Email: Email,
         UserName: UserName,
         Password: Password
-        
+
     }
 
     return fetch(baseUrl + 'identity/register', {
@@ -58,9 +58,11 @@ export const createAccount = (Email, UserName, Password) => (dispatch) => {
             })
         .then(response => response.json())
         .then(response => dispatch(addAccount(response)))
-        .then((data) => {
-            console.log(data)
-            /* alert(data);*/
+        .then((response) => {
+            if (response.status >= 200 && response.status <= 299) {
+                document.cookie = "refreshToken=" + response.payload.refreshToken;
+                document.cookie = "JwtClaimId=" + response.payload.token;
+            }
         })
         .catch(error => {
             console.log('Post account ', error.message);
@@ -103,8 +105,11 @@ export const Login = (Email, Password) => (dispatch) => {
         .then(response => response.json())
         .then(response => dispatch(Lodins(response)))
         .then(response => {
-            document.cookie = "refreshToken=" + response.payload.refreshToken;
-            document.cookie = "JwtClaimId=" + response.payload.token;
+            if (response.status >= 200 && response.status <= 299) {
+                document.cookie = "refreshToken=" + response.payload.refreshToken;
+                document.cookie = "JwtClaimId=" + response.payload.token;
+            }
+
         })
         .catch(error => {
             console.log('Post account ', error.message);

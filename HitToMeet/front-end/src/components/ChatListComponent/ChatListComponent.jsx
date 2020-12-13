@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'reactstrap';
-import { getCookie } from '../baseUrl';
+import { baseUrl, getCookie } from '../baseUrl';
 import style from './ChatList.module.css';
 import { withRouter } from 'react-router-dom';
 
 class ChatList extends Component {
     constructor(props) {
         super(props);
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     ChatBlock() {
@@ -16,12 +18,22 @@ class ChatList extends Component {
     componentDidMount() {
         if (!getCookie('JwtClaimId')) {
             this.props.history.push('/login');
+
+            
+        } else {
+            fetch(baseUrl + "chats/", {
+                method: "GET",
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Authorization': `Bearer ${getCookie("JwtClaimId")}`,
+                    'Content-Type': 'application/json; charset=UTF-8'
+                },
+            })
         }
     }
 
-    handleSubmit(){
-        window.location.replace("/chat");
-            
+    handleSubmit() {
+        this.props.history.push("/chat/1");
     }
 
 

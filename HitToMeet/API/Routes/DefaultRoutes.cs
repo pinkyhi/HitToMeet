@@ -47,6 +47,7 @@
             public const string SendMessage = Base + "/chats/{chatId}";
             public const string GetChat = Base + "/chats/{chatId}";
             public const string BanChat = Base + "/chats/{chatId}";
+            public const string CreateChat = Base + "/chats/{acceptorId}";
         }
     }
 }

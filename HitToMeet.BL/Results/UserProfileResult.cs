@@ -30,5 +30,7 @@ namespace HitToMeet.BL.Results
         public int Balance { get; set; }
 
         public IEnumerable<UserSkinModel> UserSkins { get; set; }
+
+        public string Id { get; set; }
     }
 }

@@ -1,26 +1,29 @@
 .info {
     margin-top: 25px;
     width: 100%;
-    display:inline-block;
+    display: inline-block;
 }
 
-.iconBack{
+.iconBack {
     font-size: 20px;
     color: white;
 }
-.back{
+
+.back {
     float: left;
 
 }
-.user{
+
+.user {
     float: left;
     margin-left: 45%;
 }
 
-.iconDots{
+.iconDots {
     font-size: 25px;
 }
-.dots{
+
+.dots {
     float: right;
 
 
@@ -30,106 +33,108 @@
 .Messages {
     margin-top: 25px;
     width: 100%;
-    bottom:0;
+    bottom: 0;
     height: 550px;
-    overflow-y:auto;
-    scrollbar-color: #458245 #714826;     
-    
+    overflow-y: auto;
+    scrollbar-color: #458245 #714826;
+
 
 }
+
 ::-webkit-scrollbar {
     width: 12px;
 }
- 
+
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 }
- 
+
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(59, 59, 61, 1); 
+    -webkit-box-shadow: inset 0 0 6px rgba(59, 59, 61, 1);
 }
 
 
 
 
 
-.UserMess{
-    width: 50%;
- 
+.UserMess {
+    width: 50%!important;
     float: right;
-
-
 }
 
 
-.OtherMess{
+.OtherMess {
     width: 51%;
     float: left;
-
-
 }
-.OtherText{
- 
-    background-color:#EBEBEB;
-    float: left;
-    border-radius:19px;
+
+.OtherText {
+    color: black;
+    background-color: #EBEBEB;
+    border-radius: 19px;
     padding: 12px;
- 
-
 }
-.OtherTextp{
+
+.OtherTextp {
     color: black;
 }
 
-.InfoMess{
- margin-top: 115px;
+.InfoMess {
+    margin-top: 115px;
 }
-.iconCheck{
+
+.iconCheck {
     font-size: 15px;
 }
-.check{
+
+.check {
 
     margin-left: 110px;
     color: #118DF0;
 
 }
-.data{
+
+.data {
     float: left;
 
 }
-.textdata{
+
+.textdata {
+    margin-top: 6px;
     font-size: 10pt;
     color: #A9A9B0;
-    padding-left:10px;
+    padding-left: 10px;
 }
 
-.UserText{
- 
-    background-color:#3355EC;
-    float: right;
-    border-radius:19px;
-    padding: 12px;
- 
-
+.UserText {
+    background-color: #3355EC;
+    border-radius: 19px;
+    padding: 10px;
 }
 
 .SendMessage {
-   
+
     width: 100%;
     position: fixed;
     bottom: 0;
     margin-bottom: 120px;
 }
-.inputmessage{
-    background-color:#020217;
-    width:750px;
+
+.inputmessage {
+    background-color: #020217;
+    width: 750px;
     height: 50px;
-    border-radius:10px;
+    border-radius: 10px;
     border: 0.64px solid #979797;
     color: white;
-    outline:none;
+    outline: none;
     padding-left: 10px;
 }
 
+.UserMessage {
+    width: 100%;
+    word-wrap: break-word;
+    display: inline-block;
+}

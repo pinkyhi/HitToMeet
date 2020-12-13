@@ -21,7 +21,7 @@ class NavBar extends Component {
     render() {
       
 
-        if (window.location.pathname == "/login"|| window.location.pathname == "/registration"|| window.location.pathname == "/quiz"|| window.location.pathname == "/successreg") {
+        if (!getCookie('JwtClaimId')) {
             return (
                 <>
                     <Navbar dark className="header-nav" expand="lg" >

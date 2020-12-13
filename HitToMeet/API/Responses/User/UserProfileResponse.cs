@@ -31,5 +31,7 @@ namespace HitToMeet.API.Responses.User
         public int Balance { get; set; }
 
         public IEnumerable<UserSkinViewModel> UserSkins { get; set; }
+
+        public string Id { get; set; }
     }
 }

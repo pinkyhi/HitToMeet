@@ -59,6 +59,7 @@ class Header extends Component {
                                 userSkin: "assets/images/user-avatar1.png"
                             });
                         }
+                        document.cookie = "userId=" + response.id;
                     },
                     (error) => {
                         console.log('Get account information', error);

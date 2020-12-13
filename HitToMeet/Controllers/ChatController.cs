@@ -61,7 +61,7 @@ namespace HitToMeet.Controllers
             return Ok(mapper.Map<ChatResponse>(result));
         }
 
-        [HttpPut(DefaultRoutes.Chats.Get)]
+        [HttpPut(DefaultRoutes.Chats.CreateChat)]
         public async Task<IActionResult> CreateChat(string acceptorId)
         {
             var userId = this.User.Claims.First(c => c.Type == StringConstants.JwtClaimId).Value;

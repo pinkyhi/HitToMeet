@@ -6,12 +6,12 @@ namespace HitToMeet.DAL.Entities
     {
         public string SenderId { get; set; }
 
-        public string AccepterId { get; set; }
+        public string AcceptorId { get; set; }
 
         public int Points { get; set; }
 
         public User Sender { get; set; }
 
-        public User Accepter { get; set; }
+        public User Acceptor { get; set; }
     }
 }

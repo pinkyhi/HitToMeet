@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HitToMeet.DAL.Migrations
 {
-    public partial class InitMigration : Migration
+    public partial class initMig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -38,6 +38,20 @@ namespace HitToMeet.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Questions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Text = table.Column<string>(nullable: true),
+                    QuestionType = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Questions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
                 {
@@ -57,7 +71,7 @@ namespace HitToMeet.DAL.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     RegistrationDate = table.Column<DateTime>(nullable: false),
-                    AnimalId = table.Column<int>(nullable: false),
+                    AnimalId = table.Column<int>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Sex = table.Column<int>(nullable: false),
                     PointsBalance = table.Column<int>(nullable: false),
@@ -66,20 +80,12 @@ namespace HitToMeet.DAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Questions",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Text = table.Column<string>(nullable: true),
-                    QuestionType = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Questions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_Animal_AnimalId",
+                        column: x => x.AnimalId,
+                        principalTable: "Animal",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -119,6 +125,27 @@ namespace HitToMeet.DAL.Migrations
                         name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Answer",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Points = table.Column<int>(nullable: false),
+                    Title = table.Column<string>(nullable: true),
+                    QuestionId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Answer", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Answer_Questions_QuestionId",
+                        column: x => x.QuestionId,
+                        principalTable: "Questions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -215,15 +242,15 @@ namespace HitToMeet.DAL.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     InitiatorId = table.Column<string>(nullable: true),
-                    AccepterId = table.Column<string>(nullable: true),
+                    AcceptorId = table.Column<string>(nullable: true),
                     ChatStatus = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Chats", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Chats_AspNetUsers_AccepterId",
-                        column: x => x.AccepterId,
+                        name: "FK_Chats_AspNetUsers_AcceptorId",
+                        column: x => x.AcceptorId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -240,15 +267,15 @@ namespace HitToMeet.DAL.Migrations
                 columns: table => new
                 {
                     SenderId = table.Column<string>(nullable: false),
-                    AccepterId = table.Column<string>(nullable: false),
+                    AcceptorId = table.Column<string>(nullable: false),
                     Points = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rate", x => new { x.SenderId, x.AccepterId });
+                    table.PrimaryKey("PK_Rate", x => new { x.SenderId, x.AcceptorId });
                     table.ForeignKey(
-                        name: "FK_Rate_AspNetUsers_AccepterId",
-                        column: x => x.AccepterId,
+                        name: "FK_Rate_AspNetUsers_AcceptorId",
+                        column: x => x.AcceptorId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -281,27 +308,6 @@ namespace HitToMeet.DAL.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Answer",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Points = table.Column<int>(nullable: false),
-                    Title = table.Column<string>(nullable: true),
-                    QuestionId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Answer", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Answer_Questions_QuestionId",
-                        column: x => x.QuestionId,
-                        principalTable: "Questions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -390,6 +396,11 @@ namespace HitToMeet.DAL.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_AnimalId",
+                table: "AspNetUsers",
+                column: "AnimalId");
+
+            migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
@@ -402,14 +413,14 @@ namespace HitToMeet.DAL.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Chats_AccepterId",
+                name: "IX_Chats_AcceptorId",
                 table: "Chats",
-                column: "AccepterId");
+                column: "AcceptorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Chats_InitiatorId_AccepterId",
+                name: "IX_Chats_InitiatorId_AcceptorId",
                 table: "Chats",
-                columns: new[] { "InitiatorId", "AccepterId" });
+                columns: new[] { "InitiatorId", "AcceptorId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Message_ChatId",
@@ -422,9 +433,9 @@ namespace HitToMeet.DAL.Migrations
                 column: "SenderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rate_AccepterId",
+                name: "IX_Rate_AcceptorId",
                 table: "Rate",
-                column: "AccepterId");
+                column: "AcceptorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RefreshTokens_UserId",

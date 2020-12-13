@@ -40,5 +40,13 @@
             public const string LiqPayRedirect = Base + "/liqPay";
             public const string LiqPayNotifications = Base + "/liqpay/notifications";
         }
+
+        public static class Chats
+        {
+            public const string Get = Base + "/chats";
+            public const string SendMessage = Base + "/chats/{chatId}";
+            public const string GetChat = Base + "/chats/{chatId}";
+            public const string BanChat = Base + "/chats/{chatId}";
+        }
     }
 }

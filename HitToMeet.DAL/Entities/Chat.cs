@@ -7,13 +7,13 @@ namespace HitToMeet.DAL.Entities
     {
         public string InitiatorId { get; set; }
 
-        public string AccepterId { get; set; }
+        public string AcceptorId { get; set; }
 
         public int ChatStatus { get; set; }
 
         public User Initiator { get; set; }
 
-        public User Accepter { get; set; }
+        public User Acceptor { get; set; }
 
         public IEnumerable<Message> Messages { get; set; }
     }

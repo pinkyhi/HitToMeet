@@ -34,8 +34,8 @@ namespace HitToMeet.DAL
                 .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<User>()
                 .HasMany(u => u.AcceptedChats)
-                .WithOne(c => c.Accepter)
-                .HasForeignKey(c => c.AccepterId)
+                .WithOne(c => c.Acceptor)
+                .HasForeignKey(c => c.AcceptorId)
                 .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<User>()
                 .HasMany(u => u.InitiatedChats)
@@ -54,8 +54,8 @@ namespace HitToMeet.DAL
                 .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<User>()
                 .HasMany(s => s.AcceptedRates)
-                .WithOne(ar => ar.Accepter)
-                .HasForeignKey(ar => ar.AccepterId)
+                .WithOne(ar => ar.Acceptor)
+                .HasForeignKey(ar => ar.AcceptorId)
                 .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<User>()
                 .HasMany(s => s.SendedRates)
@@ -85,9 +85,9 @@ namespace HitToMeet.DAL
             modelBuilder.Entity<UserSkin>()
                 .HasKey(us => new { us.SkinId, us.UserId });
             modelBuilder.Entity<Rate>()
-                .HasKey(us => new { us.SenderId, us.AccepterId });
+                .HasKey(us => new { us.SenderId, us.AcceptorId });
             modelBuilder.Entity<Chat>()
-                .HasIndex(us => new { us.InitiatorId, us.AccepterId });
+                .HasIndex(us => new { us.InitiatorId, us.AcceptorId });
         }
     }
 }

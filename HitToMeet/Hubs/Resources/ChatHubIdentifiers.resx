@@ -117,61 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BadModelData" xml:space="preserve">
-    <value>Bad model data</value>
-  </data>
-  <data name="ChatAlreadyExistsException" xml:space="preserve">
-    <value>Chat already exists</value>
-  </data>
-  <data name="ChatIsBannedException" xml:space="preserve">
-    <value>Chat is banned</value>
-  </data>
-  <data name="ChatNotFoundException" xml:space="preserve">
-    <value>Chat not found</value>
-  </data>
-  <data name="EmailOccupiedException" xml:space="preserve">
-    <value>This email is already occupied</value>
-  </data>
-  <data name="ExceedAnimalException" xml:space="preserve">
-    <value>You already have an animal</value>
-  </data>
-  <data name="HitToMeetException" xml:space="preserve">
-    <value>Something went wrong on server</value>
-  </data>
-  <data name="InvalidPasswordException" xml:space="preserve">
-    <value>Invalid password</value>
-  </data>
-  <data name="InvalidRefreshTokenException" xml:space="preserve">
-    <value>Invalid refresh token</value>
-  </data>
-  <data name="RefreshTokenIsExpiredException" xml:space="preserve">
-    <value>Refresh token is expired</value>
-  </data>
-  <data name="RefreshTokenIsInvalidatedException" xml:space="preserve">
-    <value>Refresh token is invalidated</value>
-  </data>
-  <data name="RefreshTokenIsUsedException" xml:space="preserve">
-    <value>Refresh token is used</value>
-  </data>
-  <data name="RefreshTokenNotFoundException" xml:space="preserve">
-    <value>Refresh token not found</value>
-  </data>
-  <data name="RefreshTokenWrongJtiException" xml:space="preserve">
-    <value>Refresh token is wrong cause wrong jti</value>
-  </data>
-  <data name="SkinNotFoundException" xml:space="preserve">
-    <value>Such skill not found</value>
-  </data>
-  <data name="TokenIsNotExpiredExeption" xml:space="preserve">
-    <value>Token isn't expired</value>
-  </data>
-  <data name="TokenRefreshingException" xml:space="preserve">
-    <value>Token refreshing error, access token may be invalid</value>
-  </data>
-  <data name="UsernameOccupiedException" xml:space="preserve">
-    <value>This username is already occupied</value>
-  </data>
-  <data name="UserUnknownException" xml:space="preserve">
-    <value>Unknown user</value>
+  <data name="NewMessage" xml:space="preserve">
+    <value>newMessage</value>
   </data>
 </root>

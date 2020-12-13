@@ -41,5 +41,12 @@
         {
             SkinNotFound = 4201
         }
+
+        public enum Chat
+        {
+            IsBanned = 4301,
+            AlreadyExists = 4302,
+            NotFound = 4303
+        }
     }
 }

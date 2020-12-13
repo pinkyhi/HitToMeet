@@ -15,10 +15,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="API\ViewModels\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.9" />
 		<PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="3.1.9" />
@@ -34,6 +30,21 @@
 		<ProjectReference Include="..\HitToMeet.BL\HitToMeet.BL.csproj" />
 		<ProjectReference Include="..\HitToMeet.Core\HitToMeet.Core.csproj" />
 		<ProjectReference Include="..\HitToMeet.DAL\HitToMeet.DAL.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Hubs\Resources\ChatHubIdentifiers.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>ChatHubIdentifiers.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Hubs\Resources\ChatHubIdentifiers.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>ChatHubIdentifiers.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
